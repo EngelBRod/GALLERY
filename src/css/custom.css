@@ -1,0 +1,37 @@
+body{
+   background-color: #f5f5f5;
+  /* background-image: url("../img/cork.jpg");
+   background-size: cover;*/
+}
+
+header{
+
+    /*background-color: #ff8000;*/
+    color:#f5f5f5;
+}
+.image-blur{
+    color:#f5f5f5;
+    filter:blur(2px);
+}
+.image:hover{
+    filter: blur(3px);
+}
+.prueba{
+    color: #f5f5f5;
+    transition:0.4s;
+}
+.info{
+    color: #f5f5f5;
+    font-weight:500;
+    visibility: hidden;
+}
+
+.prueba:hover{
+    background-color:rgba(128, 128, 128,0.4);
+    
+    
+}
+
+.backg-image{
+    background-image: url('C:\Users\Engel\Pictures\WALLPAPERS\49268.jpg');
+}
