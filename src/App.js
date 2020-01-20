@@ -8,16 +8,33 @@ function App() {
 
   const [imageSearch,saveImageSearch] =useState('')
   const [images,saveImages]=useState([])
+  const [currentPage,saveCurrentPage]=useState(1)
+  const [totalPages,saveTotalPages]=useState(0)
+
+  const nextPage= ()=>{
+    
+    if(currentPage<=totalPages){
+      let pagew =  currentPage
+      pagew++
+      saveCurrentPage(pagew)
+      
+    }
+
+    
+  }
 
   const searchApi =  async ()=>{
     const key=process.env.REACT_APP_PIXABAY_KEY;
     const amountPages=30;
-    const url=`https://pixabay.com/api/?key=${key}&q=${imageSearch}&per_page=${amountPages}&image_type=photo`;
-    const results= await fetch(url);
-    const response= await results.json()
-    
+    const url=`https://pixabay.com/api/?key=${key}&q=${imageSearch}&per_page=${amountPages}&image_type=photo&page=${currentPage}`;
+    const results= await fetch(url ,{ mode: 'no-cors' });
+    const response= await results.json()    
+    const pages= Math.round(response.total/amountPages)
+
     saveImages(response.hits)
-    console.log(response.hits)
+    saveTotalPages(pages)
+
+    console.log(response)
 
     
 
@@ -33,20 +50,37 @@ function App() {
 
    
     
-  },[imageSearch])
+  },[imageSearch,currentPage])
 
   return (
     
     
     <div className="App ">
     
-        <Header/>
+       <header>
+            <div className="container"> 
+
+                <div className="row m-0">
+                    <div className="col-12  p-0 ">
+                        <nav className="navbar d-flex justify-content-around">
+                        <h1 className="navbar-brand">GALLERY</h1> 
+                        <Search
+                          saveImageSearch={saveImageSearch}
+                        />   
+                        </nav>
+
+                    </div>
+                    
+                </div>  
+            </div>
+
+        </header>
+
+
 
         <div className="row">
           <div className="col-12 d-flex justify-content-center">
-            <Search
-              saveImageSearch={saveImageSearch}
-            />          
+                   
 
           </div>
 
@@ -58,6 +92,7 @@ function App() {
                images={images}
              />
           
+          <button onClick={nextPage} >prueba</button>
 
          
         

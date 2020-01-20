@@ -58,14 +58,14 @@ function Image({image,imageHD,saveImageHD}) {
         
     }
     return ( 
-        <div  className="col-3 d-flex  align-self-start justify-content-center p-4">
+        <div  className="col-3 d-flex  align-self-start justify-content-center my-4">
             <div   className="card rounded">
             <img   src={image.previewURL} className="   img-fluid img-thumbnail"/>
                 <div  onMouseEnter={mouseIn} onMouseLeave={mouseOut} className="  prueba  rounded card-img-overlay d-flex justify-content-center align-items-center"  data-image={image.webformatURL}>
                 
                      <div className="info card-text text-white d-text justify-content-center">
                          
-                              <img src={view} data-toggle="modal" data-target="#exampleModal"></img>
+                              <img className="imageHD" src={view} data-toggle="modal" data-target="#exampleModal"></img>
                             
                              
                          
@@ -79,10 +79,10 @@ function Image({image,imageHD,saveImageHD}) {
                   <div className="modal-dialog" role="document">
                     <div className="modal-content">
                    
-                      <div class="modal-body">
+                      <div className="modal-body d-flex justify-content-center">
                    
                         
-                      <img   src={imageHD} className="   img-fluid " />
+                      <img   src={imageHD} className="  img-fluid " />
                       </div>
                     
                     </div>

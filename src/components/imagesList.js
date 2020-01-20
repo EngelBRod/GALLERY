@@ -7,10 +7,10 @@ function ImagesList({images}){
     const [imageHD,saveImageHD]=useState('')
 
     return ( 
-        <div className="container">
-            <div className="row ">
-   
-           
+        <div id="imageFrame" className="container p-4">
+            <div  className="row m-0 ">
+                <div className="col-12">
+                    <div id="imageBoard"  className="row">
                     { images.map(image =>(
                         <Image
                         key={image.id}
@@ -20,7 +20,14 @@ function ImagesList({images}){
                        
                     />
 
-                    )) }  
+                    )) } 
+
+                    </div>
+
+                </div>
+   
+           
+                   
 
             </div>
         </div>
