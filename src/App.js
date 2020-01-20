@@ -27,7 +27,7 @@ function App() {
     const key=process.env.REACT_APP_PIXABAY_KEY;
     const amountPages=30;
     const url=`https://pixabay.com/api/?key=${key}&q=${imageSearch}&per_page=${amountPages}&image_type=photo&page=${currentPage}`;
-    const results= await fetch(url ,{ mode: 'no-cors' });
+    const results= await fetch(url);
     const response= await results.json()    
     const pages= Math.round(response.total/amountPages)
 
