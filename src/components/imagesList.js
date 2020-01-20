@@ -7,7 +7,7 @@ function ImagesList({images}){
     const [imageHD,saveImageHD]=useState('')
 
     return ( 
-        <div id="imageFrame" className="container p-4">
+        
             <div  className="row m-0 ">
                 <div className="col-12">
                     <div id="imageBoard"  className="row">
@@ -30,7 +30,7 @@ function ImagesList({images}){
                    
 
             </div>
-        </div>
+       
         
         
      );

@@ -23,17 +23,22 @@ function Search({saveImageSearch}){
 
     return(
 
-        <form onSubmit={processForm}>
+        <form  onSubmit={processForm} className="d-flex justify-content-center ">
             
               <input 
-                            
+              
+              id="search"                            
               name='search'
               onChange={e => saveSearch(e.target.value)}
-              type="text"/>
+              type="text"
+              className="form-control"
+              />
 
               <input
                
-               type="submit"/>
+               type="submit"
+               className="btn button"
+               />
 
                {(error) ?  <Error/> 
                : null }

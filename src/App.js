@@ -3,6 +3,7 @@ import Fragment from 'react';
 import Search from './components/search';
 import ImageList from './components/imagesList'
 import Header from './components/header'
+import logo from './img/Logo.png'
 
 function App() {
 
@@ -12,25 +13,37 @@ function App() {
   const [totalPages,saveTotalPages]=useState(0)
 
   const nextPage= ()=>{
-    
-    if(currentPage<=totalPages){
+    console.log("total"+totalPages)
+    if(currentPage<totalPages){
       let pagew =  currentPage
       pagew++
       saveCurrentPage(pagew)
       
     }
+    
 
     
   }
 
+  const previousPage= ()=>{
+
+    if(currentPage>1){
+      let pagew =  currentPage
+      pagew--
+      saveCurrentPage(pagew)
+      
+    }
+
+  }
+
   const searchApi =  async ()=>{
     const key=process.env.REACT_APP_PIXABAY_KEY;
-    const amountPages=30;
+    const amountPages=28;
     const url=`https://pixabay.com/api/?key=${key}&q=${imageSearch}&per_page=${amountPages}&image_type=photo&page=${currentPage}`;
     const results= await fetch(url);
     const response= await results.json()    
-    const pages= Math.round(response.total/amountPages)
-
+    const pages= Math.round(response.totalHits/amountPages)
+    console.log(pages)
     saveImages(response.hits)
     saveTotalPages(pages)
 
@@ -57,42 +70,51 @@ function App() {
     
     <div className="App ">
     
-       <header>
-            <div className="container"> 
+    <div id="imageFrame"  className="container py-4 mx-auto my-4"> 
+          <header>      
 
-                <div className="row m-0">
-                    <div className="col-12  p-0 ">
-                        <nav className="navbar d-flex justify-content-around">
-                        <h1 className="navbar-brand">GALLERY</h1> 
-                        <Search
-                          saveImageSearch={saveImageSearch}
-                        />   
-                        </nav>
+                    <div className="row m-0">
+                        <div className="col-12  p-0 ">
+                            <nav className="navbar d-flex justify-content-around">
+                            <img src={logo}></img> 
+                            <Search
+                              saveImageSearch={saveImageSearch}
+                            />   
+                            </nav>
 
-                    </div>
-                    
-                </div>  
+                        </div>
+                        
+                    </div>  
+              
+
+            </header>
+            <ImageList
+               images={images}
+             />
+
+          <section>
+            <div className="row"> 
+              <div className="col-12 d-flex justify-content-center">
+              <button onClick={previousPage} className="btn button mx-2" >Prev</button> 
+                <button onClick={nextPage} className="btn button mx-2" >Next</button>
+                
+              </div>
+              
             </div>
+          </section>
 
-        </header>
+          
+      </div>
 
 
 
-        <div className="row">
-          <div className="col-12 d-flex justify-content-center">
-                   
-
-          </div>
-
-        </div>
+        
       
         
 
-             <ImageList
-               images={images}
-             />
+            
           
-          <button onClick={nextPage} >prueba</button>
+         
 
          
         
