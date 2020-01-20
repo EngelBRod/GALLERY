@@ -38,6 +38,9 @@ header{
 .image:hover{
     filter: blur(3px);
 }
+.images{
+    box-shadow: 2px 3px 8px 1px #000;
+}
 .prueba{
     color: #f5f5f5;
     transition:0.4s;

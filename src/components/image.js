@@ -59,7 +59,7 @@ function Image({image,imageHD,saveImageHD}) {
     }
     return ( 
         <div  className="col-3 d-flex  align-self-start justify-content-center my-4">
-            <div   className="card rounded">
+            <div   className="card rounded images">
             <img   src={image.previewURL} className="   img-fluid img-thumbnail"/>
                 <div  onMouseEnter={mouseIn} onMouseLeave={mouseOut} className="  prueba  rounded card-img-overlay d-flex justify-content-center align-items-center"  data-image={image.webformatURL}>
                 
