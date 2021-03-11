@@ -1,39 +1,39 @@
-import React from 'react';
-import {useState} from 'react';
+// @flow
+import React, { useState } from 'react';
+import ProptTypes from 'prop-types';
 import Image from './image';
 
-function ImagesList({images}){
+function ImagesList({ images }) {
+  const [imageHD, saveImageHD] = useState('');
 
-    const [imageHD,saveImageHD]=useState('')
+  return (
 
-    return ( 
-        
-            <div  className="row m-0 ">
-                <div className="col-12">
-                    <div id="imageBoard"  className="row">
-                    { images.map(image =>(
-                        <Image
-                        key={image.id}
-                        image={image}
-                        imageHD ={imageHD}
-                        saveImageHD={saveImageHD}
-                       
-                    />
+    <div className="row m-0 ">
+      <div className="col-12">
+        <div id="imageBoard" className="row">
+          { images.map((image) => (
+            <Image
+              key={image.id}
+              image={image}
+              imageHD={imageHD}
+              saveImageHD={saveImageHD}
+            />
 
-                    )) } 
+          )) }
 
-                    </div>
+        </div>
 
-                </div>
-   
-           
-                   
+      </div>
 
-            </div>
-       
-        
-        
-     );
+    </div>
+
+  );
 }
- 
+
 export default ImagesList;
+ImagesList.defaultProps = {
+  images: null,
+};
+ImagesList.propTypes = {
+  images: ProptTypes.array,
+}

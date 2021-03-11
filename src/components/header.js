@@ -1,23 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Search from './search';
 
-const Header = () => {
-    return (
-        <header>
-            <div className="container"> 
+function Header({saveImageSearch}){
+  return(
+    <header>
+    <div className="row m-0">
+      <div className="col-12  p-0 ">
+        <nav className="navbar d-flex justify-content-around">
+          <h1>Gallery</h1>
+          <Search
+            saveImageSearch={saveImageSearch}
+          />
+        </nav>
 
-                <div className="row m-0">
-                    <div className="col-12 d-flex justify-content-center p-0 ">
-                        <nav className="navbar">
-                        <h1 className="navbar-brand">GALLERY</h1> 
-                        </nav>
+      </div>
+    </div>
+  </header>
+  );
 
-                    </div>
-                    
-                </div>  
-            </div>
+};
 
-        </header>
-      );
-}
- 
 export default Header;
+Header.propTypes ={
+  saveImageSearch: PropTypes.func,
+}
